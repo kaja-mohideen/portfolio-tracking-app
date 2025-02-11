@@ -1,4 +1,7 @@
 name: Build Electron App using NodeJS & Webpack
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   push:

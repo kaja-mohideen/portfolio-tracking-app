@@ -8,7 +8,21 @@ TODO:
 
 == Development
 
+* Install NodeJS
+
+[source,bash]
+----
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+nvm install 22
+----
+
 * Based on electron. Created using Electron forge with `webpack-typescript` template. [https://www.electronforge.io/]
+
+[source,bash]
+----
+npx create-electron-app@latest portfolio-tracking-app --template=webpack-typescript
+----
+
 * See forge.config.ts for entrypoints and makers.
 * New dev env would need `npm install`
 * Make sure to run the following commands to enable running chrome in sandbox mode

@@ -1,0 +1,22 @@
+= Portfolio Tracking app
+
+TODO: Overview
+
+== Use-cases
+
+TODO:
+
+== Development
+
+* Based on electron. Created using Electron forge with `webpack-typescript` template. [https://www.electronforge.io/]
+* See forge.config.ts for entrypoints and makers.
+* New dev env would need `npm install`
+* Make sure to run the following commands to enable running chrome in sandbox mode
+
+[source, bash]
+----
+sudo chown root:root node_modules/electron/dist/chrome-sandbox
+sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
+----
+
+* Run using `npm start` (See package.json)

@@ -1,0 +1,1 @@
+declare const ElectronMain: typeof import ("./api/IpcInterface")

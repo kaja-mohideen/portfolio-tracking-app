@@ -32,11 +32,8 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 
 document.getElementById("btnPing").addEventListener('click', () => {
     document.getElementById('responseArea').innerText = "Clicked";
-    ElectronMain.send('sendPing', {
-       name: "Ping Button"
-    });
-    console.log ("Ping sent");
-    ElectronMain.on('sendPingResponse', (event, message) => {
-        document.getElementById('responseArea').innerText = message;
-    })
+    console.log ("Sending New Ping");
+    ElectronMain.ping("New Ping").then(((value) => {
+        document.getElementById('responseArea').innerText = value;
+    }))
 });

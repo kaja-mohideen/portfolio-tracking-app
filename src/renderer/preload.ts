@@ -5,6 +5,5 @@ import { contextBridge, ipcRenderer } from "electron";
 import * as spi from "./api/IpcInterface";
 
 contextBridge.exposeInMainWorld ('ElectronMain', {
-    send: spi.send,
-    on: spi.on
+    ping: spi.ping
 })

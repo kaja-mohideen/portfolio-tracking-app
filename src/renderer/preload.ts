@@ -1,9 +1,14 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 
-import { contextBridge, ipcRenderer } from "electron";
-import * as spi from "./api/IpcInterface";
+// preload.ts
+import { contextBridge, ipcRenderer } from 'electron';
 
-contextBridge.exposeInMainWorld ('ElectronMain', {
-    ping: spi.ping
-})
+// Expose services to renderer with type safety
+contextBridge.exposeInMainWorld('ElectronMain', {
+    ping: {
+        sayHelloTo: async function (msg: string) {
+            return ipcRenderer.invoke("ping:sayHelloTo", msg);
+        }
+    }
+});

@@ -33,7 +33,7 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 document.getElementById("btnPing").addEventListener('click', () => {
     document.getElementById('responseArea').innerText = "Clicked";
     console.log ("Sending New Ping");
-    ElectronMain.ping("New Ping").then(((value) => {
+    window.ElectronMain.ping.sayHelloTo ("New Ping").then((value) => {
         document.getElementById('responseArea').innerText = value;
-    }))
+    });
 });

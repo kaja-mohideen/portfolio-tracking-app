@@ -1,6 +1,11 @@
 import 'reflect-metadata';
-import { ipcMain } from 'electron';
-import { IService } from '../../services/IService';
+import { ipcMain, IpcMainInvokeEvent } from 'electron';
+
+type AddExtraArgumentToEachFunction<T, ExtraArgument> = {
+    [K in keyof T]: T[K] extends (...args: infer A) => infer R ? (ipcMainEvent: ExtraArgument, ...args: A) => R : T[K];
+};
+
+export type AddIPCSupport<T> = AddExtraArgumentToEachFunction<T, IpcMainInvokeEvent> & IPCService;
 
 interface IpcMethod {
     methodName: string;
@@ -22,7 +27,11 @@ export function handleIPC() {
     };
 }
 
-export function registerService(instance: IService) {
+export interface IPCService {
+    getServiceName(): string;
+}
+
+export function registerService(instance: IPCService) {
     const serviceName = instance.getServiceName();
     const methods: IpcMethod[] = Reflect.getMetadata('ipcMethods', instance) || [];
 

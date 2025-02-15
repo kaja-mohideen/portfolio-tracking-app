@@ -1,8 +1,9 @@
-import { IPingService } from './IPingService';
-import { handleIPC } from '../../infra/ipc/ipcDecorator';
+import { AddIPCSupport, handleIPC } from '../../infra/ipc/IPCSupport';
+import { IPingService } from '../../../common/services/IPingService';
 import { IpcMainInvokeEvent } from 'electron';
 
-export class PingService implements IPingService {
+type IPCPingService = AddIPCSupport<IPingService>
+export class PingService implements IPCPingService {
     
     getServiceName(): string {
         return 'ping';

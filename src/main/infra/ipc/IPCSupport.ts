@@ -27,7 +27,7 @@ export function handleIPC() {
     };
 }
 
-export interface IPCService {
+interface IPCService {
     getServiceName(): string;
 }
 

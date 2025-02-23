@@ -27,13 +27,16 @@
  */
 
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
-document.getElementById("btnPing").addEventListener('click', () => {
-    document.getElementById('responseArea').innerText = "Clicked";
-    console.log ("Sending New Ping");
-    window.ElectronMain.ping.sayHelloTo ("New Ping").then((value) => {
-        document.getElementById('responseArea').innerText = value;
-    });
-});
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);

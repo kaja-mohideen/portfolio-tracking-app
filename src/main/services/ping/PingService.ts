@@ -14,8 +14,12 @@ export class PingService implements IPCPingService {
         console.log (`sayHello Called with ${name}`);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(`Hello ${name}`);
-                console.log ("sayHello Responded");
+                if (name === 'ansari') {
+                    resolve(`1`);
+                    console.log ("sayHello Responded");
+                } else {
+                    reject(new Error(`Unknown user ${name}`));
+                }
             }, 5000);
         });
     }

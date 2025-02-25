@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { ipcMain, IpcMainInvokeEvent } from 'electron';
+import AppError from '../../../common/AppError';
 
 type AddExtraArgumentToEachFunction<T, ExtraArgument> = {
     [K in keyof T]: T[K] extends (...args: infer A) => infer R ? (ipcMainEvent: ExtraArgument, ...args: A) => R : T[K];
@@ -43,7 +44,7 @@ export function registerService(instance: IPCService) {
                 return await method.apply(instance, [event, ...args]);
             } catch (error) {
                 console.error(`Error in IPC handler ${eventName}:`, error);
-                return { error: error.message };
+                throw new AppError({'message': 'IPC Error', 'details': error.message});
             }
         });
     });

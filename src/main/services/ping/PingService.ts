@@ -18,7 +18,7 @@ export class PingService implements IPCPingService {
                     resolve(`1`);
                     console.log ("sayHello Responded");
                 } else {
-                    reject(new Error(`Unknown user ${name}`));
+                    resolve(`0`);
                 }
             }, 5000);
         });
